@@ -12,7 +12,7 @@ Requirements
 
 - Python 3.6
 - Django 3.0.4
-- channels 2.4.0
+- Channels 2.4.0
 
 Installation
 ^^^^^^^^^^^^
