@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Real-Time Sharing {% endblock title%}
+
+{% block content %}
+<div class="container">
+    <center><h2>{{share.name}}</h2></center>
+    <center>{{ share.uid|json_script:"room-name" }}</center>
+    <div class="alert alert-info">
+        <center><strong>
+            Press Ctrl + Enter (Windows and Linux), Cmd + Enter (MacOS) to send data
+        </strong></center>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <select id="select-syntax" class="custom-select">
+                <option value="">Select Syntax</option>
+            </select>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <p style="font-size: 18px"><b><i class="fa fa-share"></i>&nbsp;<u>Shareable link</u></b> (Anyone with the link can view and edit the text)</p>
+                    <p style="font-size: 15px">
+                        {{ request.scheme }}://{{request.get_host}}/share/{{share.uid}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <textarea id="typed-text" cols="100" rows="20" class="form-control" placeholder="Write or paste code here then share the URL. Anyone you share with will see code as it is typed!"></textarea>
+    <br>
+    <button id="chat-message-submit" class="btn btn-info">
+        <i class="fa fa-paper-plane"></i>&nbsp;Send
+    </button>
+    <br><br>
+</div>
+<script type="text/javascript" src="{% static 'js/data_send.js' %}"></script>
+{% endblock content %}
