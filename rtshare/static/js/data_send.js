@@ -14,9 +14,10 @@ $(document).ready(function() {
         editor.setOption("mode", CodeMirror.findModeByName(this.value).mime);
     });
     const roomName = JSON.parse(document.getElementById('room-name').textContent);
+    var ws_scheme = window.location.protocol == "https:" ? "wss://" : "ws://";
 
     const Socket = new WebSocket(
-        'ws://' + window.location.host + '/ws/share/' + roomName
+        ws_scheme + window.location.host + '/ws/share/' + roomName
     );
 
     Socket.onmessage = function(e) {
