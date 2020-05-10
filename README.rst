@@ -5,7 +5,7 @@ Introduction
 ^^^^^^^^^^^^
 
 A Real time text sharing system using django and channels.
-
+Try out the demo at https://djrtshare.co.in/share
 
 Requirements
 ^^^^^^^^^^^^
@@ -30,7 +30,7 @@ Installation
           
     ::
           
-       sudo yum install redis-server
+       sudo yum install redis
 
 - Start redis server
     
