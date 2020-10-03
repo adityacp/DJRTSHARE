@@ -29,17 +29,16 @@ def view_room(request, room_id):
     if share.is_locked:
         messages.warning(request, F"The {share.name} is locked")
         return render(request, 'rtshare/index.html')
-    else:
-        static_path = settings.STATIC_ROOT
-        path = os.path.join(
-            os.getcwd(), static_path, "js", "codemirror", "mode"
-        )
-        codemirror_files = []
-        for mode in os.listdir(path):
-            if os.path.isdir(os.path.join(path, mode)):
-                codemirror_files.append(
-                    static("js/codemirror/mode/{0}/{0}.js".format(mode))
-                    )
-        return render(request, 'rtshare/room.html', {
-            'share': share, 'codemirror_files': codemirror_files
-        })
+    static_path = settings.STATIC_ROOT
+    path = os.path.join(
+        os.getcwd(), static_path, "js", "codemirror", "mode"
+    )
+    codemirror_files = []
+    for mode in os.listdir(path):
+        if os.path.isdir(os.path.join(path, mode)):
+            codemirror_files.append(
+                static("js/codemirror/mode/{0}/{0}.js".format(mode))
+                )
+    return render(request, 'rtshare/room.html', {
+        'share': share, 'codemirror_files': codemirror_files
+    })
